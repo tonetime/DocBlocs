@@ -6,6 +6,7 @@ var injectHTML = null
 // },1000)
 
 
+
 const waitUntilElementExists = (selector, callback) => {
         const el = document.querySelector(selector);
         if (el){
@@ -15,6 +16,11 @@ const waitUntilElementExists = (selector, callback) => {
 }
 
 waitUntilElementExists('.docs-texteventtarget-iframe', () => {
+
+	test  = document.getElementsByClassName("docs-texteventtarget-iframe")
+
+
+
 	editor = document.getElementsByClassName("docs-texteventtarget-iframe")[0].contentDocument.querySelectorAll('[contenteditable=true]')[0]
 	editor.addEventListener('keydown', onKeyPress, false);
 	document.body.addEventListener('click', onClick,false)
@@ -41,12 +47,12 @@ const onClick = (e) => {
 trigger_key = 191; // slash 
 const onKeyPress = (e) => {
 	if (e.keyCode == trigger_key) {
+		e.preventDefault()
 		if (docBlocksModal != null) {
 			toggleModal()
 		}
 		else {
 			loadDocBlocksModal()			
-			e.preventDefault()
 		}
 	}
 	positionModal()

@@ -1,18 +1,26 @@
-+ Change the trigger to the '/' button. DONE
-+ Need to trigger a click anywhere outside the shadow to close it. DONE
 
-
-+ Move the boxshadow into modal.html
-+ Work a little more to try to get javascript rendered in modal. Makes everything better.
-
-
-
-+ Get the on click to always find the right id.
+var template = document.createElement( 'template' )
+template.innerHTML = data 
+console.log(template);
+shadowRoot.appendChild( document.importNode( template.content, true ) )
 
 
 
-+ Build the clickable list like notion  (3 items bold/video/new line) DONE
-+ onclick 
-
-
-1:19 -> 1:55
+const createKeyboardEvent = (type, keyConfig) => {
+  var defaultConfig = {
+    keyCode: null,
+    bubbles: true,
+    cancelable: true,
+    composed: false, // important for event to get through
+    shiftKey: false,
+    metaKey: false,
+    altKey: false,
+  }
+  var mergedConfig = Object.assign(defaultConfig, keyConfig); // 2nd object takes priority
+  return new KeyboardEvent(type, mergedConfig);
+}
+const pasteKey = () => {
+	console.log("Trying to paste!");
+	var kDown = createKeyboardEvent("keydown", {keyCode:86, metaKey:true, altKey:false,shiftKey:false});
+	let x = document.body.dispatchEvent(kDown);
+}
