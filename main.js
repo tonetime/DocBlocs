@@ -6,6 +6,7 @@ var injectHTML = null
 // },1000)
 
 
+console.log('Should go here only in docs.google.com');
 
 const waitUntilElementExists = (selector, callback) => {
         const el = document.querySelector(selector);
